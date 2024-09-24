@@ -1,0 +1,71 @@
+# Python specific #
+###################
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django stuff #
+################
+
+# Django migrations (if you want to track migrations, remove this)
+*/migrations/*.py
+*/migrations/*.pyc
+
+# Ignore SQLite database
+*.sqlite3
+
+# Media folder (uploads) - uncomment if needed
+# /media/
+
+# Static root (if you're collecting static files)
+staticfiles/
+static/
+
+# Local development environment #
+#################################
+
+# Ignore local environment variables
+.env
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# IDE specific #
+################
+.vscode/
+*.swp
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Docker specific #
+###################
+
+# Ignore Docker files (uncomment if needed)
+# *.log
+# docker-compose.override.yml
+
+# Ignore Docker volumes
+volumes/
+*.pid
+
+# MacOS specific #
+##################
+
+# Ignore Mac system files
+.DS_Store
+
+# Windows specific #
+####################
+
+# Thumbs.db: stores thumbnails for Windows Explorer
+Thumbs.db
+# Folder config file for Windows Explorer
+Desktop.ini
+# Recycle Bin used on file shares
+$RECYCLE.BIN/

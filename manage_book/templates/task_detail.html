@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>{{ object.name }}</title>
+</head>
+<body>
+    <h1>{{ object.name }}</h1>
+    <p><strong>Author:</strong> {{ object.author }}</p>
+    <p><strong>Year of Publication:</strong> {{ object.year_publication }}</p>
+    <p><strong>Category:</strong> {{ object.get_category_display }}</p>
+    <p><strong>Pages:</strong> {{ object.pages }}</p>
+    <p><strong>Price:</strong> {{ object.price }}</p>
+    <p><strong>Release Date:</strong> {{ object.release_date }}</p>
+
+    <a href="{% url 'manage_book:task_update' object.pk %}">Edit</a>
+    <a href="{% url 'manage_book:task_list' %}">Back to List</a>
+</body>
+</html>

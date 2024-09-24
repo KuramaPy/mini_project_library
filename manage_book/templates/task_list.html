@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Book List</title>
+</head>
+<body>
+    <h1>Book List</h1>
+    <form method="GET" action="{% url 'manage_book:task_list' %}">
+        <input type="text" name="price" placeholder="Max Price">
+        <input type="text" name="publication_date" placeholder="Publication Year">
+        <button type="submit">Filter</button>
+    </form>
+    <form method="POST" action="{% url 'manage_book:task_delete_filtered' %}">
+        {% csrf_token %}
+        <input type="hidden" name="price" value="{{ request.GET.price }}">
+        <input type="hidden" name="publication_date" value="{{ request.GET.publication_date }}">
+        <button type="submit">Delete Filtered</button>
+    </form>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Author</th>
+            <th>Year</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+        {% for book in books %}
+        <tr>
+            <td>{{ book.name }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.year_publication }}</td>
+            <td>{{ book.price }}</td>
+            <td>
+                <a href="{% url 'manage_book:task_detail' book.pk %}">View</a>
+                <a href="{% url 'manage_book:task_update' book.pk %}">Edit</a>
+                <a href="{% url 'manage_book:task_delete' book.pk %}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'manage_book:task_create' %}" class="button">Add New Book</a>
+</body>
+</html>
